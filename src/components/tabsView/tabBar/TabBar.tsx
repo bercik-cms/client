@@ -1,5 +1,5 @@
 import React from 'react';
-import Tab from './tab/tab';
+import Tab from './tab/Tab';
 
 export interface Props {
     tabNames: Array<string>;
