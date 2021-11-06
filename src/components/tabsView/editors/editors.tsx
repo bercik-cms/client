@@ -11,32 +11,39 @@ import UserCreation from './userManagement/userCreation/UserCreation';
 import UserManagement from './userManagement/userManagement/UserManagement';
 
 interface Editor {
-    name: string,
     icon: string,
     component: React.FC,
 }
 
-type EditorTree = { [name: string]: Array<Editor>; };
+type EditorTree = { [categoryName: string]: { [editorName: string]: Editor; }; };
+
+export function isCategory(names: Array<string>) {
+    return names.length === 1;
+}
+
+export function isEditor(names: Array<string>) {
+    return !isCategory(names);
+}
 
 const editors: EditorTree = {
-    "Data management": [
-        { name: "Manage table data", icon: "", component: TableDataManagement },
-        { name: "Manage files", icon: "", component: FileManagement },
-        { name: "Data SQL editor", icon: "", component: DataSqlEditor },
-    ],
-    "Schema editing": [
-        { name: "Create table", icon: "", component: TableEditing },
-        { name: "Edit tables", icon: "", component: TableCreation },
-        { name: "Schema SQL editor", icon: "", component: SchemaSqlEditor },
-    ],
-    "Endpoint management": [
-        { name: "Manage endpoints", icon: "", component: EndpointManagement },
-        { name: "Manage templates", icon: "", component: TemplateManagement },
-    ],
-    "User management": [
-        { name: "Create user", icon: "", component: UserCreation },
-        { name: "Manage users", icon: "", component: UserManagement },
-    ]
+    "Data management": {
+        "Manage table data": { icon: "", component: TableDataManagement },
+        "Manage files": { icon: "", component: FileManagement },
+        "Data SQL editor": { icon: "", component: DataSqlEditor },
+    },
+    "Schema editing": {
+        "Create table": { icon: "", component: TableEditing },
+        "Edit tables": { icon: "", component: TableCreation },
+        "Schema SQL editor": { icon: "", component: SchemaSqlEditor },
+    },
+    "Endpoint management": {
+        "Manage endpoints": { icon: "", component: EndpointManagement },
+        "Manage templates": { icon: "", component: TemplateManagement },
+    },
+    "User management": {
+        "Create user": { icon: "", component: UserCreation },
+        "Manage users": { icon: "", component: UserManagement },
+    }
 };
 
 export default editors;
