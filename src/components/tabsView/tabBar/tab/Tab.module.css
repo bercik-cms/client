@@ -1,0 +1,42 @@
+.tab {
+    display: flex;
+    padding: .5rem;
+    border: 1px solid var(--fg2);
+    border-right: none;
+    border-bottom: 2px solid var(--fg2);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.tab p {
+    flex-grow: 1;
+}
+
+.selected {
+    border-bottom: 2px solid var(--blue);
+    background-color: var(--bg1);
+}
+
+.closeButton {
+    border: none;
+    padding: .2rem;
+    border-radius: .3rem;
+    color: var(--red);
+    width: 1rem;
+    cursor: pointer;
+}
+
+.closeButton:hover {
+    background-color: var(--bg1);
+}
+
+.selected .closeButton:hover {
+    background-color: var(--bg2);
+}
+
+.selected .closeButton {
+    background-color: var(--bg1);
+}

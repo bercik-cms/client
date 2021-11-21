@@ -1,3 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    color: var(--fg0);
+}
+
+body, button {
+    background-color: var(--bg0);
+}
+
 .App {
   text-align: center;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
+import { EditorComponentProps } from '../../editors';
 import styles from './TableCreation.module.css';
 
-interface Props {
+interface Props extends EditorComponentProps {
 
 };
 

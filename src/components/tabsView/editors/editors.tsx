@@ -10,12 +10,37 @@ import TableEditing from './schemaEditing/tableEditing/TableEditing';
 import UserCreation from './userManagement/userCreation/UserCreation';
 import UserManagement from './userManagement/userManagement/UserManagement';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
+import {
+    faCode,
+    faCogs,
+    faDatabase,
+    faFile,
+    faFileCode,
+    faPen,
+    faPlus,
+    faTable,
+    faUserPlus,
+    faUsers,
+    faUsersCog
+} from '@fortawesome/free-solid-svg-icons';
+
+export interface EditorComponentProps {
+
+};
+
 interface Editor {
-    icon: string,
-    component: React.FC,
+    icon: IconDefinition,
+    component: React.FC<EditorComponentProps>,
 }
 
-type EditorTree = { [categoryName: string]: { [editorName: string]: Editor; }; };
+interface EditorFolder {
+    icon: IconDefinition;
+    editors: { [editorName: string]: Editor; };
+}
+
+type EditorTree = { [folderName: string]: EditorFolder; };
 
 export function isCategory(names: Array<string>) {
     return names.length === 1;
@@ -27,22 +52,34 @@ export function isEditor(names: Array<string>) {
 
 const editors: EditorTree = {
     "Data management": {
-        "Manage table data": { icon: "", component: TableDataManagement },
-        "Manage files": { icon: "", component: FileManagement },
-        "Data SQL editor": { icon: "", component: DataSqlEditor },
+        icon: faDatabase,
+        editors: {
+            "Table data management": { icon: faTable, component: TableDataManagement },
+            "File management": { icon: faFile, component: FileManagement },
+            "Data SQL editor": { icon: faCode, component: DataSqlEditor },
+        }
     },
     "Schema editing": {
-        "Create table": { icon: "", component: TableEditing },
-        "Edit tables": { icon: "", component: TableCreation },
-        "Schema SQL editor": { icon: "", component: SchemaSqlEditor },
+        icon: faTable,
+        editors: {
+            "Table creation": { icon: faPlus, component: TableCreation },
+            "Table editing": { icon: faPen, component: TableEditing },
+            "Schema SQL editor": { icon: faCode, component: SchemaSqlEditor },
+        }
     },
     "Endpoint management": {
-        "Manage endpoints": { icon: "", component: EndpointManagement },
-        "Manage templates": { icon: "", component: TemplateManagement },
+        icon: faCode,
+        editors: {
+            "Endpoint management": { icon: faCogs, component: EndpointManagement },
+            "Template management": { icon: faFileCode, component: TemplateManagement },
+        }
     },
     "User management": {
-        "Create user": { icon: "", component: UserCreation },
-        "Manage users": { icon: "", component: UserManagement },
+        icon: faUsers,
+        editors: {
+            "User creation": { icon: faUserPlus, component: UserCreation },
+            "User management": { icon: faUsersCog, component: UserManagement },
+        }
     }
 };
 

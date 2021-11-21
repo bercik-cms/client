@@ -1,0 +1,16 @@
+.tabBar {
+    width: 100%;
+    display: flex;
+}
+
+.newTabButton {
+    flex: 0 0 2rem;
+    border: 1px solid var(--fg0);
+    border-right: none;
+    border-bottom: 2px solid var(--fg0);
+    cursor: pointer;
+}
+
+.newTabButton:hover {
+    background-color: var(--bg1);
+}

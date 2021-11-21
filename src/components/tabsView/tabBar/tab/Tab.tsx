@@ -1,4 +1,6 @@
 import React from 'react';
+import styles from './Tab.module.css';
+import { toClassNames } from '../../../../util/toClassNames';
 
 export interface Props {
     tabName: string;
@@ -10,10 +12,19 @@ export interface Props {
 
 const Tab: React.FC<Props> = ({ tabName, selected, onSelect, onClose }) => {
 
-    return <div onClick={() => !selected && onSelect()}>
+    return <div
+        className={toClassNames({
+            [styles.tab]: true,
+            [styles.selected]: selected,
+        })}
+        onClick={() => !selected && onSelect()}
+    >
         <p>{tabName}</p>
-        <button onClick={() => !selected && onClose()}>X</button>
-    </div >;
+        <button
+            className={styles.closeButton}
+            onClick={e => { e.stopPropagation(); onClose(); }}
+        >X</button>
+    </div>;
 };
 
 export default Tab;
