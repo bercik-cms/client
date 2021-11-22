@@ -41,7 +41,14 @@ const TabsView: React.FC<Props> = ({ }) => {
     }
 
     function onNewTab() {
-        if (tabNames.length === 1) return;
+        if (tabNames[tabNames.length - 1].length === 0) {
+            // The last tab is already a new tab - select it
+            setSelectedTab(tabNames.length - 1);
+        } else {
+            let oldLen = tabNames.length;
+            setTabNames([...tabNames, []]);
+            setSelectedTab(oldLen);
+        }
     }
 
     return <div>

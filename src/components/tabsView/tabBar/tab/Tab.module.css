@@ -1,4 +1,6 @@
 .tab {
+    flex-grow: 1;
+    flex-basis: 0;
     display: flex;
     padding: .5rem;
     border: 1px solid var(--fg2);
@@ -6,13 +8,19 @@
     border-bottom: 2px solid var(--fg2);
     cursor: pointer;
     user-select: none;
-    display: flex;
-    width: 100%;
     justify-content: space-between;
+    position: relative;
+    min-width: 0;
+
 }
 
 .tab p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
     flex-grow: 1;
+    min-width: 0;
 }
 
 .selected {
@@ -21,12 +29,20 @@
 }
 
 .closeButton {
+    flex-shrink: 0;
     border: none;
-    padding: .2rem;
     border-radius: .3rem;
-    color: var(--red);
-    width: 1rem;
     cursor: pointer;
+    padding: 0 .3rem;
+    margin: 0;
+}
+
+.closeButton path {
+    color: var(--fg2);
+}
+
+.closeButton:hover path {
+    color: var(--red);
 }
 
 .closeButton:hover {
