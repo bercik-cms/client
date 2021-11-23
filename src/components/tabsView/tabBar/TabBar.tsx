@@ -1,8 +1,10 @@
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faPlus, faSun } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 import Tab from './tab/Tab';
 import styles from './TabBar.module.css';
+import { isThemeDark, setTheme, toggleTheme } from '../../../util/colorSchemes';
 
 export interface Props {
     tabNames: Array<Array<string>>;
@@ -14,6 +16,14 @@ export interface Props {
 }
 
 const TabBar: React.FC<Props> = ({ tabNames, selectedTab, onSelect, onClose, onNewTab }) => {
+    let [themeIcon, setThemeIcon] = useState<IconDefinition>(isThemeDark() ? faSun : faMoon);
+
+    function onThemeButtonClick() {
+        let wasDark = isThemeDark();
+        toggleTheme();
+        setThemeIcon(wasDark ? faMoon : faSun);
+    }
+
     return <div className={styles.tabBar}>
         <button onClick={onNewTab} className={styles.newTabButton}>
             <FontAwesomeIcon icon={faPlus} />
@@ -27,6 +37,9 @@ const TabBar: React.FC<Props> = ({ tabNames, selectedTab, onSelect, onClose, onN
                 onClose={() => onClose(index)}
             />
         ))}
+        <button onClick={onThemeButtonClick} className={styles.newTabButton}>
+            <FontAwesomeIcon icon={themeIcon} />
+        </button>
     </div>;
 };
 

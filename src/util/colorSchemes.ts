@@ -39,6 +39,11 @@ const colorschemes: { [name: string]: { [color: string]: string; }; } = {
     }
 };
 
+export function isThemeDark() {
+    let current = getTheme() || defaultTheme;
+    return current.indexOf("dark") !== -1;
+}
+
 export function toggleTheme() {
     let current = getTheme() || defaultTheme;
     let newTheme: string;
