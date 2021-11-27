@@ -8,6 +8,7 @@ import { isThemeDark, setTheme, toggleTheme } from '../../../util/colorSchemes';
 
 export interface Props {
     tabNames: Array<Array<string>>;
+    tabSubtitles: { [index: number]: string; };
     selectedTab: number;
 
     onSelect: (index: number) => void,
@@ -15,7 +16,7 @@ export interface Props {
     onNewTab: () => void,
 }
 
-const TabBar: React.FC<Props> = ({ tabNames, selectedTab, onSelect, onClose, onNewTab }) => {
+const TabBar: React.FC<Props> = ({ tabNames, tabSubtitles, selectedTab, onSelect, onClose, onNewTab }) => {
     let [themeIcon, setThemeIcon] = useState<IconDefinition>(isThemeDark() ? faSun : faMoon);
 
     function onThemeButtonClick() {
@@ -31,6 +32,7 @@ const TabBar: React.FC<Props> = ({ tabNames, selectedTab, onSelect, onClose, onN
         {tabNames.map((name, index) => (
             <Tab
                 key={index}
+                subtitle={tabSubtitles[index] || null}
                 tabName={(name.length !== 0) ? name[name.length - 1] : "Selecting editor"}
                 selected={index === selectedTab}
                 onSelect={() => onSelect(index)}

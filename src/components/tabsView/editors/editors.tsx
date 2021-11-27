@@ -28,7 +28,6 @@ import {
 
 export interface EditorComponentProps {
     onChangeTabSubtitle: (subtitle: string) => void,
-    onExitEditor: () => void,
 };
 
 interface Editor {

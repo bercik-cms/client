@@ -10,6 +10,7 @@ interface Props {
 const TabsView: React.FC<Props> = ({ }) => {
     const [selectedTab, setSelectedTab] = useState(0);
     const [tabNames, setTabNames] = useState<Array<Array<string>>>([[], ["Data management"]]);
+    const [tabSubtitles, setTabSubtitles] = useState<{ [index: number]: string; }>({});
 
     // Keep the selected tab index less than the count of tabs
     useEffect(() => {
@@ -52,17 +53,28 @@ const TabsView: React.FC<Props> = ({ }) => {
         }
     }
 
-    function onChangeTabSubtitle(newSubtitle: string) {
-
+    function onChangeTabSubtitle(index: number, newSubtitle: string) {
+        if (newSubtitle === "") {
+            let newVal = { ...tabSubtitles };
+            delete newVal[index];
+            setTabSubtitles(newVal);
+        } else {
+            setTabSubtitles({ ...tabSubtitles, [index]: newSubtitle });
+        }
     }
 
     function onNavigate(tabIndex: number, newPath: Array<string>) {
-
+        setTabNames([
+            ...tabNames.slice(0, tabIndex),
+            newPath,
+            ...tabNames.slice(tabIndex + 1, tabNames.length)
+        ]);
     }
 
     return <div style={{ height: "100%" }}>
         <TabBar
             tabNames={tabNames}
+            tabSubtitles={tabSubtitles}
             selectedTab={selectedTab}
             onSelect={handleOnSelect}
             onClose={handleOnClose}
@@ -76,7 +88,7 @@ const TabsView: React.FC<Props> = ({ }) => {
             >
                 <EditorSelector
                     tabName={element}
-                    onChangeTabSubtitle={onChangeTabSubtitle}
+                    onChangeTabSubtitle={newSubtitle => onChangeTabSubtitle(index, newSubtitle)}
                     onNavigate={newPath => onNavigate(index, newPath)}
                 />
             </div>

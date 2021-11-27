@@ -15,12 +15,25 @@
 }
 
 .tab p {
+    display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 
     flex-grow: 1;
     min-width: 0;
+}
+
+.subtitle {
+    color: var(--fg2)
+}
+
+.subtitle::before {
+    content: " (";
+}
+
+.subtitle::after {
+    content: ")";
 }
 
 .selected {

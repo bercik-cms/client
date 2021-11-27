@@ -1,3 +1,4 @@
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import editors, { getFolderElements } from '../editors/editors';
@@ -10,23 +11,40 @@ interface Props {
 }
 
 const EditorSelector: React.FC<Props> = ({ tabName, onChangeTabSubtitle, onNavigate }) => {
-    function onExitEditor() {
-        onNavigate([tabName[0]]);
+    function onGoBack() {
+        onNavigate(tabName.slice(0, tabName.length - 1));
+    }
+
+    function onEditorClick(nameClicked: string) {
+        onNavigate([...tabName, nameClicked]);
     }
 
     if (tabName.length === 2) {
         let EditorComponent = editors[tabName[0]].editors[tabName[1]].component;
-        return <EditorComponent
-            onChangeTabSubtitle={onChangeTabSubtitle}
-            onExitEditor={onExitEditor}
-        />;
+        return <div className={styles.editorHolder}>
+            <button className={styles.goBackButton} onClick={onGoBack}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+            <EditorComponent
+                onChangeTabSubtitle={onChangeTabSubtitle}
+            />
+        </div>;
     }
 
     let folderElements = getFolderElements(tabName);
 
     return <div className={styles.elementGrid}>
+        {tabName.length !== 0 &&
+            <button className={styles.goBackButton} onClick={onGoBack}>
+                <FontAwesomeIcon icon={faArrowLeft} />
+            </button>
+        }
         {folderElements.map((element, index) => (
-            <div key={index} className={styles.gridItem}>
+            <div
+                key={index}
+                className={styles.gridItem}
+                onClick={() => onEditorClick(element.name)}
+            >
                 <FontAwesomeIcon className={styles.itemIcon} icon={element.icon} />
                 <p className={styles.itemTitle}>{element.name}</p>
             </div>

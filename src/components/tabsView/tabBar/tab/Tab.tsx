@@ -7,12 +7,13 @@ import { faCross, faTimes, faTimesCircle, faXRay } from '@fortawesome/free-solid
 export interface Props {
     tabName: string;
     selected: boolean;
+    subtitle: string | null;
 
     onSelect: () => void,
     onClose: () => void,
 }
 
-const Tab: React.FC<Props> = ({ tabName, selected, onSelect, onClose }) => {
+const Tab: React.FC<Props> = ({ tabName, selected, onSelect, onClose, subtitle }) => {
 
     function onTabClick(e: React.MouseEvent) {
         // Close tab on middle click
@@ -31,7 +32,10 @@ const Tab: React.FC<Props> = ({ tabName, selected, onSelect, onClose }) => {
         onClick={onTabClick}
         onAuxClick={onTabClick}
     >
-        <p>{tabName}</p>
+        <p>
+            {tabName}
+            {subtitle !== null && <span className={styles.subtitle}>{subtitle}</span>}
+        </p>
         <button
             className={styles.closeButton}
             onClick={e => { e.stopPropagation(); onClose(); }}
