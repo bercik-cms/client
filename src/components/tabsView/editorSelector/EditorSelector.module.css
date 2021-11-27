@@ -1,0 +1,35 @@
+.elementGrid {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+    gap: 1rem;
+    margin: auto;
+    max-width: 1280px;
+}
+
+.gridItem {
+    display: block;
+    padding: 1rem;
+    background-color: var(--bg1);
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.gridItem:hover {
+    background-color: var(--bg2);
+}
+
+.gridItem:hover path, .gridItem:hover p {
+    color: var(--blue);
+}
+
+.itemIcon {
+    font-size: 5rem;
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.itemTitle {
+    user-select: none;
+}

@@ -27,7 +27,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface EditorComponentProps {
-
+    onChangeTabSubtitle: (subtitle: string) => void,
+    onExitEditor: () => void,
 };
 
 interface Editor {
@@ -82,5 +83,28 @@ const editors: EditorTree = {
         }
     }
 };
+
+interface EditorFolderElement {
+    name: string,
+    icon: IconDefinition,
+}
+
+export function getFolderElements(folderName: Array<string>): Array<EditorFolderElement> {
+    if (folderName.length > 1)
+        console.error(`getFolderElements(): Error folder name, should be at most 1 element: ${folderName}`);
+
+    let result: Array<EditorFolderElement> = [];
+    if (folderName.length === 0) {
+        for (let [key, entry] of Object.entries(editors)) {
+            result.push({ name: key, icon: entry.icon });
+        }
+    } else {
+        let folder = editors[folderName[0]].editors;
+        for (let [key, entry] of Object.entries(folder)) {
+            result.push({ name: key, icon: entry.icon });
+        }
+    }
+    return result;
+}
 
 export default editors;

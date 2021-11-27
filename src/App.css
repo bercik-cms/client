@@ -10,8 +10,18 @@ body, button {
     background-color: var(--bg0);
 }
 
+body, html {
+    height: 100%;
+    overflow: hidden;
+}
+
+#root {
+    height: 100%;
+}
+
 .App {
   text-align: center;
+  height: 100%;
 }
 
 .App-logo {

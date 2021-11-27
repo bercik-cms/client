@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EditorSelector from './editorSelector/EditorSelector';
 import TabBar from './tabBar/TabBar';
+import styles from "./TabsView.module.css";
 
 interface Props {
 
@@ -8,7 +9,7 @@ interface Props {
 
 const TabsView: React.FC<Props> = ({ }) => {
     const [selectedTab, setSelectedTab] = useState(0);
-    const [tabNames, setTabNames] = useState<Array<Array<string>>>([[], ["test"], ['test2']]);
+    const [tabNames, setTabNames] = useState<Array<Array<string>>>([[], ["Data management"]]);
 
     // Keep the selected tab index less than the count of tabs
     useEffect(() => {
@@ -51,7 +52,15 @@ const TabsView: React.FC<Props> = ({ }) => {
         }
     }
 
-    return <div>
+    function onChangeTabSubtitle(newSubtitle: string) {
+
+    }
+
+    function onNavigate(tabIndex: number, newPath: Array<string>) {
+
+    }
+
+    return <div style={{ height: "100%" }}>
         <TabBar
             tabNames={tabNames}
             selectedTab={selectedTab}
@@ -59,6 +68,19 @@ const TabsView: React.FC<Props> = ({ }) => {
             onClose={handleOnClose}
             onNewTab={onNewTab}
         />
+        {tabNames.map((element, index) => (
+            <div
+                key={index}
+                className={styles.mainView}
+                style={{ display: index === selectedTab ? "block" : "none" }}
+            >
+                <EditorSelector
+                    tabName={element}
+                    onChangeTabSubtitle={onChangeTabSubtitle}
+                    onNavigate={newPath => onNavigate(index, newPath)}
+                />
+            </div>
+        ))}
     </div>;
 };
 
