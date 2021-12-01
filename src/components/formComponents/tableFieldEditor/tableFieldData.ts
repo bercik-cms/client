@@ -25,7 +25,7 @@ export interface TableFieldData {
 
 export const defaultTableFieldData: TableFieldData = {
     name: "Field name",
-    type: tableDataType.Integer,
+    type: "Integer",
     notNull: true,
     default: null,
 };

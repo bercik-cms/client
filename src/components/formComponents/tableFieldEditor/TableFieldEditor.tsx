@@ -1,8 +1,7 @@
 import React from 'react';
 import { tableDataSelectValues, tableDataType, TableFieldData } from './tableFieldData';
-import Select from 'react-select';
 import styles from './TableFieldEditor.module.css';
-import { ObjectFlags } from 'typescript';
+import BercikSelect from '../../selectComponent/BercikSelect';
 
 interface Props {
     fieldData: TableFieldData;
@@ -23,14 +22,10 @@ const TableFieldEditor: React.FC<Props> = ({ fieldData, onDataChange }) => {
         </div>
         <div className={styles.labelCombo}>
             <label>Type</label>
-            <Select
-                className={styles.select}
+            <BercikSelect
                 options={tableDataSelectValues}
-                value={{ value: fieldData.type, label: tableDataType[fieldData.type] }}
-                onChange={n => {
-                    console.log(n);
-                    onDataChange({ ...fieldData, type: n!.value });
-                }}
+                selected={{ value: fieldData.type, label: tableDataType[fieldData.type] }}
+                onSelect={val => onDataChange({ ...fieldData, type: val.value })}
             />
         </div>
         <div className={styles.labelCombo}>
