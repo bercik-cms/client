@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { setSyntheticLeadingComments } from 'typescript';
+import { toClassNames } from '../../../util/toClassNames';
 import { SelectOptionInterface } from '../BercikSelect';
 import { fuzzySearchSelectOptions } from './fuzzySearch';
 import styles from "./SelectDropdown.module.css";
@@ -15,7 +15,16 @@ const SelectDropdown: React.FC<Props> = ({ options, onSelect, onLoseFocus }) => 
     let matching = fuzzySearchSelectOptions(query, options);
 
     function onBlur(e: React.FocusEvent<HTMLDivElement, Element>) {
-        if (e.relatedTarget === null) onLoseFocus();
+        if (
+            e.relatedTarget === null
+            || !e.currentTarget.contains(e.relatedTarget)
+        ) onLoseFocus();
+    }
+
+    function handleEnter(e: React.KeyboardEvent<HTMLInputElement>) {
+        if (e.key === "Enter" && matching.length >= 1) {
+            onSelect(matching[0]);
+        }
     }
 
     return <div onBlur={onBlur} className={styles.dropdownDiv}>
@@ -23,12 +32,16 @@ const SelectDropdown: React.FC<Props> = ({ options, onSelect, onLoseFocus }) => 
             className={styles.textInput}
             value={query}
             onChange={e => setQuery(e.target.value)}
+            onKeyPress={handleEnter}
             ref={r => r?.focus()}
         />
         <div className={styles.buttonHolder}>
             {matching.map((value, index) => (
                 <button
-                    className={styles.optionButton}
+                    className={toClassNames({
+                        [styles.optionButton]: true,
+                        [styles.firstButton]: index === 0,
+                    })}
                     key={index}
                     onClick={() => onSelect(value)}
                 >

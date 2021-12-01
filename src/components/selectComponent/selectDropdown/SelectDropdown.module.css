@@ -7,14 +7,16 @@
     padding: .5rem;
 
     width: max(50vw, 500px);
+    z-index: 999;
 }
 
 .textInput {
     border: none;
+    border-bottom: 1px solid var(--fg0);
     background-color: var(--bg2);
     display: block;
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: .2rem;
     color: var(--fg0);
     margin-bottom: .2rem;
@@ -26,7 +28,6 @@
     text-align: left;
     display: block;
     width: 100%;
-    font-size: 1.2rem;
     padding: .2rem;
     background-color: var(--bg1);
     color: var(--fg0)
@@ -34,4 +35,14 @@
 
 .optionButton:hover {
     background-color: var(--bg2);
+}
+
+.firstButton {
+    border-top: none;
+}
+
+.firstButton::after {
+    font-size: .8em;
+    content: " (Enter to select)";
+    color: var(--fg2) !important;
 }

@@ -17,7 +17,6 @@ interface Props {
 };
 
 const BercikSelect: React.FC<Props> = ({ options, selected, onSelect }) => {
-    console.log(`BercikSelect: ${selected.value}`);
     let [dropdownOpen, setDropdownOpen] = useState(false);
 
     return <div className={styles.topDiv}>
