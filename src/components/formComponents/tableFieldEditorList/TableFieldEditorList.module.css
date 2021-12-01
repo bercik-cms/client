@@ -1,0 +1,30 @@
+.container {
+    border: 1px solid var(--fg0);
+}
+
+.newFieldButton {
+    cursor: pointer;
+    border: none;
+    padding: .4rem 0;
+    width: 100%;
+}
+
+.newFieldButton:hover {
+    background-color: var(--green);
+}
+
+.fieldList {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+}
+
+.deleteFieldButton {
+    cursor: pointer;
+    border: none;
+    border-right: 1px solid var(--fg0);
+    border-bottom: 1px solid var(--fg0);
+}
+
+.deleteFieldButton:hover {
+    background-color: var(--red);
+}

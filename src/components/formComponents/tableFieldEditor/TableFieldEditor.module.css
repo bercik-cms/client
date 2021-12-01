@@ -1,0 +1,39 @@
+.container {
+    padding: .8rem;
+    padding-top: .2rem;
+    border-bottom: 1px solid var(--fg0);
+}
+
+.labelCombo {
+    margin-right: 1rem;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 3.5rem;
+}
+
+.labelCombo > label {
+    font-size: .7rem;
+}
+
+.labelCombo:last-child {
+    flex-grow: 1;
+}
+
+.textInput {
+    background-color: var(--bg0);
+    color: var(--fg0);
+    border: none;
+    border-bottom: 1px solid var(--fg0);
+    padding: .2rem;
+}
+
+.select {
+    width: 10rem;
+}
+
+.select * {
+    color: var(--fg0) !important;
+    background-color: var(--bg0) !important;
+    border-color: var(--fg0) !important;
+}

@@ -42,6 +42,12 @@
     position: relative;
 }
 
+.editorHolderInner {
+    height: 100%;
+    max-width: 800px;
+    margin: auto;
+}
+
 .goBackButton {
     position: absolute;
     left: 2rem;

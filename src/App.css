@@ -2,7 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
 
+path {
+    color: var(--fg0);
+}
+
+body {
     color: var(--fg0);
 }
 
@@ -20,7 +26,6 @@ body, html {
 }
 
 .App {
-  text-align: center;
   height: 100%;
 }
 
@@ -57,4 +62,10 @@ body, html {
   to {
     transform: rotate(360deg);
   }
+}
+
+input[type="checkbox"] {
+    margin: .2rem;
+    height: 1.1rem;
+    width: 1.2rem;
 }

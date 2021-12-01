@@ -12,6 +12,7 @@ interface Props {
 
 const EditorSelector: React.FC<Props> = ({ tabName, onChangeTabSubtitle, onNavigate }) => {
     function onGoBack() {
+        onChangeTabSubtitle("");
         onNavigate(tabName.slice(0, tabName.length - 1));
     }
 
@@ -25,9 +26,11 @@ const EditorSelector: React.FC<Props> = ({ tabName, onChangeTabSubtitle, onNavig
             <button className={styles.goBackButton} onClick={onGoBack}>
                 <FontAwesomeIcon icon={faArrowLeft} />
             </button>
-            <EditorComponent
-                onChangeTabSubtitle={onChangeTabSubtitle}
-            />
+            <div className={styles.editorHolderInner}>
+                <EditorComponent
+                    onChangeTabSubtitle={onChangeTabSubtitle}
+                />
+            </div>
         </div>;
     }
 

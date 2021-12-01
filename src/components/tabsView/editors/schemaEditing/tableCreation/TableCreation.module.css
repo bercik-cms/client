@@ -1,0 +1,12 @@
+.container h2 {
+    margin: 1rem 0;
+    font-weight: normal;
+}
+
+.nameTextInput {
+    font-size: 2rem;
+    border: none;
+    border-bottom: 1px solid var(--fg0);
+    color: var(--fg0);
+    background-color: var(--b0);
+}
