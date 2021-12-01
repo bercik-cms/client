@@ -27,6 +27,7 @@ const BercikSelect: React.FC<Props> = ({ options, selected, onSelect }) => {
         {dropdownOpen && <SelectDropdown
             options={options}
             onSelect={val => { setDropdownOpen(false); onSelect(val); }}
+            onLoseFocus={() => setDropdownOpen(false)}
         />}
     </div>;
 };
