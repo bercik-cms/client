@@ -2,6 +2,7 @@ import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import SelectDropdown from './selectDropdown/SelectDropdown';
+import styles from "./BercikSelect.module.css";
 
 export interface SelectOptionInterface {
     value: string,
@@ -19,10 +20,10 @@ const BercikSelect: React.FC<Props> = ({ options, selected, onSelect }) => {
     console.log(`BercikSelect: ${selected.value}`);
     let [dropdownOpen, setDropdownOpen] = useState(false);
 
-    return <div>
-        <button onClick={() => setDropdownOpen(!dropdownOpen)}>
+    return <div className={styles.topDiv}>
+        <button className={styles.mainButton} onClick={() => setDropdownOpen(!dropdownOpen)}>
             {selected.label}
-            <FontAwesomeIcon icon={dropdownOpen ? faArrowUp : faArrowDown} />
+            <FontAwesomeIcon className={styles.icon} icon={dropdownOpen ? faArrowUp : faArrowDown} />
         </button>
         {dropdownOpen && <SelectDropdown
             options={options}

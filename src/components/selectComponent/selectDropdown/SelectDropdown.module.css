@@ -1,0 +1,37 @@
+.dropdownDiv {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    background: var(--bg1);
+    padding: .5rem;
+
+    width: max(50vw, 500px);
+}
+
+.textInput {
+    border: none;
+    background-color: var(--bg2);
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: .2rem;
+    color: var(--fg0);
+    margin-bottom: .2rem;
+}
+
+.optionButton {
+    border: none;
+    border-top: 1px solid var(--fg0);
+    text-align: left;
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: .2rem;
+    background-color: var(--bg1);
+    color: var(--fg0)
+}
+
+.optionButton:hover {
+    background-color: var(--bg2);
+}
