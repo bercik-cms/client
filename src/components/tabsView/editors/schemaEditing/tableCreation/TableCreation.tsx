@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { EditorComponentProps } from '../../editors';
 import TableFieldEditor from '../../../../formComponents/tableFieldEditor/TableFieldEditor';
 import styles from './TableCreation.module.css';
-import { defaultTableFieldData, TableFieldData } from '../../../../formComponents/tableFieldEditor/tableFieldData';
+import { defaultTableFieldData, TableFieldData, tableFieldsToApiJson } from '../../../../formComponents/tableFieldEditor/tableFieldData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import TableFieldEditorList from '../../../../formComponents/tableFieldEditorList/TableFieldEditorList';
+import axios from 'axios';
+import MessageComponent, { MessageComponentProps } from '../../../../messageComponent/MessageComponent';
 
 interface Props extends EditorComponentProps {
 
@@ -14,6 +16,8 @@ interface Props extends EditorComponentProps {
 const TableCreation: React.FC<Props> = ({ onChangeTabSubtitle }) => {
     let [newTableName, setNewTableName] = useState("");
     let [tableFields, setTableFields] = useState<Array<TableFieldData>>([]);
+
+    let [message, setMessage] = useState<null | MessageComponentProps>(null);
 
     function onTableNameChange(newName: string) {
         setNewTableName(newName);
@@ -41,6 +45,17 @@ const TableCreation: React.FC<Props> = ({ onChangeTabSubtitle }) => {
         ]);
     }
 
+    function onSubmit() {
+        let apiTableFields = tableFieldsToApiJson(tableFields);
+
+        axios.post("/api/create-table", { table_name: newTableName, table_fields: apiTableFields })
+            .then(res => {
+                setMessage({ success: true, message: "Successfully created table" });
+            }).catch(err => {
+                setMessage({ success: false, message: err.response.data });
+            });
+    }
+
     return <div className={styles.container}>
         <label>New table name:</label><br />
         <input
@@ -56,6 +71,12 @@ const TableCreation: React.FC<Props> = ({ onChangeTabSubtitle }) => {
             onNewField={onNewTableField}
             onDeleteField={onDeleteTableField}
         />
+
+        {message !== null && <MessageComponent {...message} />}
+
+        <button onClick={onSubmit} className={styles.submitButton}>
+            Submit
+        </button>
     </div>;
 };
 

@@ -10,3 +10,17 @@
     color: var(--fg0);
     background-color: var(--b0);
 }
+
+.submitButton {
+    cursor: pointer;
+    color: var(--fg0);
+    background-color: var(--bg0);
+    padding: .5rem;
+    width: 100%;
+    border: 1px solid var(--fg0);
+    font-weight: bold;
+}
+
+.submitButton:hover {
+    background-color: var(--green);
+}

@@ -11,7 +11,7 @@ export interface SelectOptionInterface {
 
 interface Props {
     options: Array<SelectOptionInterface>,
-    selected: SelectOptionInterface,
+    selected: SelectOptionInterface | null,
 
     onSelect: (option: SelectOptionInterface) => void,
 };
@@ -21,7 +21,7 @@ const BercikSelect: React.FC<Props> = ({ options, selected, onSelect }) => {
 
     return <div className={styles.topDiv}>
         <button className={styles.mainButton} onClick={() => setDropdownOpen(!dropdownOpen)}>
-            {selected.label}
+            {selected !== null ? selected.label : "select value"}
             <FontAwesomeIcon className={styles.icon} icon={dropdownOpen ? faArrowUp : faArrowDown} />
         </button>
         {dropdownOpen && <SelectDropdown
