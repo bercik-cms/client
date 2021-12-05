@@ -48,6 +48,16 @@ const defaultApiField: ApiTableFieldData = {
     default: "None",
 };
 
+function field_type_content(
+    type: string,
+    customTypeValue: string,
+    foreignKeyTableName: string | null
+): { type: string, content?: string | undefined, } {
+    if (type === "CustomType") return { type: type, content: customTypeValue };
+    if (type === "ForeignKey") return { type: type, content: foreignKeyTableName! };
+    return { type: type };
+}
+
 export function tableFieldsToApiJson(fields: Array<TableFieldData>) {
     let result: Array<ApiTableFieldData> = [];
 
@@ -56,12 +66,7 @@ export function tableFieldsToApiJson(fields: Array<TableFieldData>) {
 
         apiField.name = field.name;
 
-        apiField.field_type = {
-            type: field.type,
-            content: field.type === "CustomType"
-                ? field.customTypeValue
-                : undefined,
-        };
+        apiField.field_type = field_type_content(field.type, field.customTypeValue, field.foreignKeyTableName);
 
         apiField.not_null = field.notNull;
         apiField.default = field.default;

@@ -47,6 +47,7 @@ const TableCreation: React.FC<Props> = ({ onChangeTabSubtitle }) => {
 
     function onSubmit() {
         let apiTableFields = tableFieldsToApiJson(tableFields);
+        console.log(apiTableFields);
 
         axios.post("/api/create-table", { table_name: newTableName, table_fields: apiTableFields })
             .then(res => {
