@@ -1,0 +1,9 @@
+.tableSelector {
+    display: flex;
+    flex-direction: row;
+}
+
+.tableSelector > h2 {
+    font-weight: normal;
+    margin-right: 1rem;
+}

@@ -36,22 +36,24 @@ const EditorSelector: React.FC<Props> = ({ tabName, onChangeTabSubtitle, onNavig
 
     let folderElements = getFolderElements(tabName);
 
-    return <div className={styles.elementGrid}>
+    return <div className={styles.gridButtonContainer}>
         {tabName.length !== 0 &&
             <button className={styles.goBackButton} onClick={onGoBack}>
                 <FontAwesomeIcon icon={faArrowLeft} />
             </button>
         }
-        {folderElements.map((element, index) => (
-            <div
-                key={index}
-                className={styles.gridItem}
-                onClick={() => onEditorClick(element.name)}
-            >
-                <FontAwesomeIcon className={styles.itemIcon} icon={element.icon} />
-                <p className={styles.itemTitle}>{element.name}</p>
-            </div>
-        ))}
+        <div className={styles.elementGrid}>
+            {folderElements.map((element, index) => (
+                <div
+                    key={index}
+                    className={styles.gridItem}
+                    onClick={() => onEditorClick(element.name)}
+                >
+                    <FontAwesomeIcon className={styles.itemIcon} icon={element.icon} />
+                    <p className={styles.itemTitle}>{element.name}</p>
+                </div>
+            ))}
+        </div>
     </div>;
 };
 

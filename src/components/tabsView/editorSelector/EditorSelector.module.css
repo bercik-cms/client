@@ -1,5 +1,8 @@
-.elementGrid {
+.gridButtonContainer {
     position: relative;
+}
+
+.elementGrid {
     padding: 2rem;
     padding-top: 4rem;
     display: grid;
@@ -13,7 +16,7 @@
     display: block;
     padding: 1rem;
     background-color: var(--bg1);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
 }
 
@@ -21,7 +24,8 @@
     background-color: var(--bg2);
 }
 
-.gridItem:hover path, .gridItem:hover p {
+.gridItem:hover path,
+.gridItem:hover p {
     color: var(--blue);
 }
 
@@ -37,14 +41,16 @@
 }
 
 .editorHolder {
-    height: 100%;
-    padding-top: 4rem;
+    margin: auto;
     position: relative;
+    padding-top: 4rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 .editorHolderInner {
-    height: 100%;
-    max-width: 800px;
+    max-width: 1280px;
+    padding-bottom: 10rem;
     margin: auto;
 }
 
@@ -54,17 +60,18 @@
     top: 1rem;
     width: 2rem;
     height: 2rem;
-    cursor:pointer;
+    cursor: pointer;
 
     border: 1px solid var(--fg0);
     border-radius: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     opacity: 50%;
 
-    transition: opacity .2s;
+    transition: opacity 0.2s;
 }
 
 .goBackButton:hover {
     background-color: var(--bg2);
     opacity: 100%;
 }
+
