@@ -1,0 +1,24 @@
+.table {
+    display: block;
+    color: var(--fg0);
+}
+
+.table td,
+.table th {
+    padding: 0.2rem 1rem;
+    border: 1px solid var(--fg2);
+    max-width: 30rem;
+}
+
+.tableHeadRow th {
+    background-color: var(--bg1);
+}
+
+.headDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headDiv > p {
+    margin-right: 1rem;
+}

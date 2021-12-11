@@ -1,0 +1,14 @@
+.button {
+    cursor: pointer;
+    border: none;
+    background-color: var(--bg1);
+    padding-left: 0.5rem;
+}
+
+.button:hover path {
+    color: var(--yellow);
+}
+
+.div {
+    display: inline;
+}

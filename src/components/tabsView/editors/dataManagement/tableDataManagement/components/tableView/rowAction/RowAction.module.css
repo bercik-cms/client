@@ -1,0 +1,23 @@
+.div button {
+    display: block;
+    border: none;
+    height: 100%;
+    padding: 0 0.5rem;
+    flex-basis: 0;
+    cursor: pointer;
+}
+
+.div {
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: stretch;
+}
+
+.buttonDelete:hover path {
+    color: var(--red);
+}
+
+.buttonEdit:hover path {
+    color: var(--green);
+}
