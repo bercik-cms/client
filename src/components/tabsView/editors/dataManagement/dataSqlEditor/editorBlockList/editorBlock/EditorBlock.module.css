@@ -1,0 +1,21 @@
+.mainDiv {
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.buttonHolder {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonHolder button {
+    text-align: left;
+    padding: 0.5rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.buttonHolder button:last-child {
+    margin-bottom: 0;
+}
