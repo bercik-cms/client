@@ -1,5 +1,8 @@
 import React from 'react';
+import { TableData } from '../../../../../../api/dataManagement/table_data';
+import SimpleTable from '../../../../../simpleTable/SimpleTable';
 import EditorBlock from './editorBlock/EditorBlock';
+import styles from './EditorBlockList.module.css';
 
 export interface Block {
     value: string;
@@ -9,9 +12,10 @@ export interface Block {
 interface Props {
     blocks: Array<Block>;
     onChange: (newBlocks: Array<Block>) => void;
+    resultMap: { [index: number]: TableData };
 }
 
-const EditorBlockList: React.FC<Props> = ({ blocks, onChange }) => {
+const EditorBlockList: React.FC<Props> = ({ blocks, onChange, resultMap }) => {
     function onBlockChange(newVal: string, index: number) {
         onChange([
             ...blocks.slice(0, index),
@@ -65,16 +69,25 @@ const EditorBlockList: React.FC<Props> = ({ blocks, onChange }) => {
         <div>
             <h2>SQL statements</h2> <br />
             {blocks.map((block, index) => (
-                <EditorBlock
-                    key={index}
-                    onChange={(val) => onBlockChange(val, index)}
-                    onMoveUp={() => onBlockMoveUp(index)}
-                    onMoveDown={() => onBlockMoveDown(index)}
-                    value={block.value}
-                    enabled={block.enabled}
-                    onDelete={() => onBlockDelete(index)}
-                    onToggleEnabled={() => onBlockToggleEnabled(index)}
-                />
+                <React.Fragment key={index}>
+                    <EditorBlock
+                        onChange={(val) => onBlockChange(val, index)}
+                        onMoveUp={() => onBlockMoveUp(index)}
+                        onMoveDown={() => onBlockMoveDown(index)}
+                        value={block.value}
+                        enabled={block.enabled}
+                        onDelete={() => onBlockDelete(index)}
+                        onToggleEnabled={() => onBlockToggleEnabled(index)}
+                    />
+
+                    {resultMap[index] !== undefined &&
+                        resultMap[index].names.length !== 0 && (
+                            <div className={styles.tableHolder}>
+                                <h4>Query result: </h4>
+                                <SimpleTable data={resultMap[index]} />
+                            </div>
+                        )}
+                </React.Fragment>
             ))}
             <button
                 style={{ display: 'block', margin: 'auto', padding: '.5rem' }}

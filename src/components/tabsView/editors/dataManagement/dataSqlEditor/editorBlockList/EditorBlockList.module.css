@@ -1,0 +1,7 @@
+.tableHolder {
+    padding: 1rem;
+    max-height: 300px;
+    margin-bottom: 2rem;
+    overflow: auto;
+    border: 1px solid var(--fg0);
+}

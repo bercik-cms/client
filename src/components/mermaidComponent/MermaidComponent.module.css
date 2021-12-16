@@ -1,0 +1,28 @@
+.container {
+    position: relative;
+}
+
+.container svg {
+    filter: var(--mermaid-filter);
+}
+
+.container button svg {
+    filter: none;
+}
+
+.fsButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.fsContainer {
+    background-color: var(--bg0);
+    border: 1px solid var(--fg0);
+    border-radius: 10px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+}

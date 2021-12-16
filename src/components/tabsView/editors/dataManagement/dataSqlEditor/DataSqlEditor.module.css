@@ -1,0 +1,11 @@
+.commitButtonsHolder {
+    margin: 2rem auto;
+    display: flex;
+    width: 80%;
+}
+
+.commitButtonsHolder > button {
+    padding: 0.5rem;
+    font-size: 1.05rem;
+    width: 100%;
+}

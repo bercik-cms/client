@@ -4,15 +4,19 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 interface Props {
     testSql: string;
     onChangeTestSql: (newTestSql: string) => void;
-    onTest: () => void;
-    onTestDiagram: () => void;
+    diffQuery: boolean;
+    onToggleDiffQuery: () => void;
+    diffMermaid: boolean;
+    onToggleDiffMermaid: () => void;
 }
 
 const QueryTesting: React.FC<Props> = ({
     testSql,
     onChangeTestSql,
-    onTest,
-    onTestDiagram,
+    diffQuery,
+    onToggleDiffQuery,
+    diffMermaid,
+    onToggleDiffMermaid,
 }) => {
     return (
         <div>
@@ -35,8 +39,12 @@ const QueryTesting: React.FC<Props> = ({
                 }}
             />
             <button
-                style={{ padding: '.5rem', marginTop: '.5rem' }}
-                onClick={() => onTest()}
+                style={{
+                    padding: '.5rem',
+                    marginTop: '.5rem',
+                    backgroundColor: diffQuery ? 'var(--bg2)' : 'var(--bg0)',
+                }}
+                onClick={() => onToggleDiffQuery()}
             >
                 Diff test query
             </button>
@@ -46,8 +54,9 @@ const QueryTesting: React.FC<Props> = ({
                     padding: '.5rem',
                     marginTop: '.5rem',
                     marginLeft: '.5rem',
+                    backgroundColor: diffMermaid ? 'var(--bg2)' : 'var(--bg0)',
                 }}
-                onClick={() => onTestDiagram()}
+                onClick={() => onToggleDiffMermaid()}
             >
                 Diff mermaid.js ER diagram
             </button>
