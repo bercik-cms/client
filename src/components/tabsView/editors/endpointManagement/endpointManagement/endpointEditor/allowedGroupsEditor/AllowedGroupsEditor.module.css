@@ -1,0 +1,40 @@
+.mainDiv {
+    padding: 0.5rem;
+    border: 1px solid var(--fg0);
+}
+
+.textInput {
+    font-size: 1rem;
+    color: var(--fg0);
+    background: var(--bg0);
+    border: none;
+    border-bottom: 1px solid var(--fg0);
+    margin-right: 1rem;
+}
+
+.list {
+    margin-top: 0.5rem;
+    padding: 0.2rem;
+}
+
+.list li {
+    font-size: 0.9rem;
+    list-style: none;
+}
+
+.list li::after {
+    content: ',';
+}
+
+.delButton {
+    border: none;
+    background-color: none;
+}
+
+.delButton:hover {
+    background-color: var(--bg0);
+}
+
+.delButton:hover path {
+    color: var(--red);
+}

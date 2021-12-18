@@ -1,0 +1,58 @@
+.nameDiv {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.nameDiv p {
+    margin-right: 1rem;
+}
+
+.nameDiv p::after {
+    content: ':';
+}
+
+.nameDiv input {
+    border: none;
+    background-color: var(--bg0);
+    color: var(--fg0);
+    border-bottom: 1px solid var(--fg0);
+    padding: 0.2rem;
+}
+
+.buttonsHolder {
+    display: block;
+    width: max-content;
+    margin-left: auto;
+}
+
+.newChildButton {
+    border-top: 0;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.newChildButton:hover {
+    background-color: var(--green);
+}
+
+.deleteButton {
+    display: inline-block;
+    margin-left: auto;
+    border-top: 0;
+    border-left: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.deleteButton:hover {
+    background-color: var(--red);
+}
+
+.childrenDiv {
+    margin-top: -1.5rem;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--fg0);
+    margin-bottom: 1rem;
+}

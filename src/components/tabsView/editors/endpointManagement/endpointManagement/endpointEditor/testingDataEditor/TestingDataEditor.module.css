@@ -1,0 +1,55 @@
+.newKeyDiv {
+    display: flex;
+}
+
+.newKeyDiv p {
+    margin-right: 1rem;
+}
+
+.newKeyDiv input {
+    background-color: var(--bg0);
+    color: var(--fg0);
+    border: none;
+    border-bottom: 1px solid var(--fg0);
+    padding: 0.2rem;
+    margin-right: 1rem;
+}
+
+.tableTextInput {
+    border: none;
+    background-color: var(--bg0);
+    color: var(--fg0);
+}
+
+.delKeyButton {
+    border: none;
+}
+
+.delKeyButton:hover {
+    background-color: var(--bg0);
+}
+
+.delKeyButton:hover path {
+    color: var(--red);
+}
+
+.table {
+    margin-top: 1rem;
+}
+
+.table th,
+.table td {
+    border: 1px solid var(--fg0);
+    text-align: left;
+    padding: 0.2rem;
+}
+
+.table th {
+    background-color: var(--bg1);
+    font-weight: normal;
+}
+
+.valueCell,
+.valueCell input {
+    width: 100%;
+}
