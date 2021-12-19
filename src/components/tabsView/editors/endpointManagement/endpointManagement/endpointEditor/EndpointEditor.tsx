@@ -21,6 +21,16 @@ const EndpointEditor: React.FC<Props> = ({ title, data, onChange }) => {
         onChange({ ...data, endpoints_info: newQueries });
     }
 
+    function onQueriesNewBack() {
+        onChange({
+            ...data,
+            endpoints_info: [
+                ...data.endpoints_info,
+                { name: 'name', sql: '', children: [] },
+            ],
+        });
+    }
+
     return (
         <div className={styles.mainDiv}>
             <h3>
@@ -70,6 +80,8 @@ const EndpointEditor: React.FC<Props> = ({ title, data, onChange }) => {
                 queries={data.endpoints_info}
                 onChange={onQueriesChange}
             />
+
+            <button onClick={onQueriesNewBack}>New independent query</button>
         </div>
     );
 };
