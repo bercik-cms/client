@@ -1,0 +1,21 @@
+.usersTable th {
+    padding: 0.4rem;
+    border: 1px solid var(--fg0);
+    background-color: var(--bg1);
+    text-align: left;
+}
+
+.usersTable td {
+    padding: 0.2rem;
+    border: 1px solid var(--fg0);
+}
+
+.usersTable button {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+.usersTable button:hover path {
+    color: var(--red);
+}

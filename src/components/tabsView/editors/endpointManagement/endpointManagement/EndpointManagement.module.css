@@ -4,3 +4,9 @@
     margin: 1rem 0;
     margin-right: 1rem;
 }
+
+.resultDiv {
+    padding: 1rem;
+    border: 1px solid var(--fg0);
+    background-color: var(--bg1);
+}
